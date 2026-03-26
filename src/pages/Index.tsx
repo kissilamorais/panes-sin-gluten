@@ -429,6 +429,17 @@ const Footer = () => (
 );
 
 /* ── Page ──────────────────────────────────────── */
+/* ── Sticky Button ─────────────────────────────── */
+const StickyOfferButton = () => (
+  <a
+    href="#precio"
+    className="fixed bottom-6 right-6 z-50 bg-gradient-gold text-primary-foreground font-body font-black text-sm md:text-base px-6 py-3 rounded-full shadow-gold hover:scale-110 transition-all duration-300 animate-pulse-glow"
+  >
+    🔥 Ver Oferta
+  </a>
+);
+
+/* ── Page ──────────────────────────────────────── */
 const Index = () => (
   <div className="min-h-screen">
     <Hero />
@@ -444,6 +455,7 @@ const Index = () => (
     <Garantia />
     <CtaFinal />
     <Footer />
+    <StickyOfferButton />
   </div>
 );
 
