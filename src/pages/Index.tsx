@@ -233,27 +233,104 @@ const ProvaSocial = () => (
 );
 
 /* ── Precio ─────────────────────────────────────── */
+const CHECKOUT_URL = "https://pay.hotmart.com/C104882579L?checkoutMode=10";
+
+const OfertaButton = ({ text }: { text: string }) => (
+  <a
+    href={CHECKOUT_URL}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block bg-gradient-gold text-primary-foreground font-body font-black text-lg md:text-xl px-10 py-5 rounded-full shadow-gold hover:scale-105 transition-all duration-300 animate-pulse-glow text-center tracking-wide"
+  >
+    {text}
+  </a>
+);
+
 const Precio = () => (
   <section id="precio" className="py-20 md:py-28 bg-gradient-warm">
-    <div className="container max-w-xl text-center">
-      <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">Oferta Especial</h2>
-      <p className="text-muted-foreground font-body text-lg mb-8">Accede al ebook + todos los bonos por un precio único.</p>
+    <div className="container max-w-2xl text-center">
+      {/* Header */}
+      <p className="font-body text-accent font-bold text-sm tracking-widest uppercase mb-3">🔥 Oferta Especial de Lanzamiento</p>
+      <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+        Este pack completo podría venderse fácilmente por:
+      </h2>
+      <p className="font-display text-4xl md:text-5xl font-bold text-muted-foreground line-through mb-8">$49 USD</p>
 
-      <div className="bg-card rounded-3xl p-8 md:p-10 shadow-gold border border-gold/20">
-        <p className="font-body text-sm text-muted-foreground mb-1">Precio normal</p>
-        <p className="font-display text-2xl text-muted-foreground line-through mb-4">$67 USD</p>
-        <p className="font-body text-sm text-gold font-bold uppercase tracking-widest mb-2">Hoy solamente</p>
+      {/* Urgency */}
+      <div className="bg-card rounded-3xl p-8 md:p-10 shadow-gold border border-gold/20 mb-8">
+        <p className="font-body text-gold font-bold text-sm uppercase tracking-widest mb-2">⏳ Pero hoy tienes una oportunidad única</p>
+        <p className="font-body text-muted-foreground text-lg mb-4">Accede a <strong className="text-foreground">TODO</strong> por solo:</p>
         <p className="font-display text-6xl md:text-7xl font-bold text-foreground mb-1">
-          $9 <span className="text-xl font-body font-normal text-muted-foreground">USD</span>
+          🔥 $9 <span className="text-xl font-body font-normal text-muted-foreground">USD</span> 🔥
         </p>
-        <p className="text-gold font-body font-bold text-lg mb-8">¡Ahorras $58! (86% de descuento)</p>
+        <p className="text-muted-foreground font-body mb-8">(Sí, pago único — sin mensualidades)</p>
 
-        <CtaButton text="🔥 ¡SÍ, QUIERO POR SOLO $9!" subtext="" />
+        {/* What you get */}
+        <div className="text-left max-w-md mx-auto mb-8">
+          <p className="font-body font-bold text-foreground text-lg mb-4">💣 TODO LO QUE RECIBES HOY:</p>
+          <ul className="space-y-3">
+            {[
+              "Ebook Panes Sin Gluten Perfectos (300+ recetas)",
+              "4 Bonos Exclusivos (1000+ recetas adicionales)",
+              "Acceso inmediato",
+              "Actualizaciones futuras",
+            ].map((item, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <Check className="w-5 h-5 text-gold mt-0.5 shrink-0" />
+                <span className="font-body text-foreground/80">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <OfertaButton text="🔥 QUIERO ACCEDER POR $9 🔥" />
 
         <div className="flex flex-wrap justify-center gap-4 mt-6 text-sm text-muted-foreground">
-          <span className="flex items-center gap-1"><ShieldCheck className="w-4 h-4" /> Pago seguro</span>
+          <span className="flex items-center gap-1"><ShieldCheck className="w-4 h-4" /> 🔒 Compra segura</span>
           <span className="flex items-center gap-1"><BookOpen className="w-4 h-4" /> Acceso inmediato</span>
         </div>
+      </div>
+
+      {/* Warning */}
+      <div className="bg-card rounded-2xl p-6 md:p-8 shadow-warm border border-destructive/20 mb-8">
+        <p className="font-body font-bold text-destructive text-sm uppercase tracking-widest mb-3">🚨 Atención: Precio Promocional</p>
+        <p className="text-foreground/80 font-body mb-1">👉 Solo para nuevos compradores</p>
+        <p className="text-foreground/80 font-body">⚠️ Puede subir en cualquier momento sin previo aviso</p>
+      </div>
+
+      {/* Decision */}
+      <div className="grid md:grid-cols-2 gap-5 mb-10">
+        <div className="bg-card rounded-2xl p-6 shadow-warm text-left">
+          <p className="font-display font-bold text-foreground text-lg mb-4">🎯 Si compras hoy:</p>
+          <ul className="space-y-2">
+            {["Pagas menos", "Aseguras todos los bonos", "Empiezas ahora"].map((t, i) => (
+              <li key={i} className="flex items-center gap-2 font-body text-foreground/80">
+                <Check className="w-4 h-4 text-gold shrink-0" /> {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="bg-card rounded-2xl p-6 shadow-warm text-left border border-destructive/10">
+          <p className="font-display font-bold text-foreground text-lg mb-4">😟 Si esperas:</p>
+          <ul className="space-y-2">
+            {["Puedes pagar más caro", "Puedes perder esta oferta"].map((t, i) => (
+              <li key={i} className="flex items-center gap-2 font-body text-destructive/80">
+                <span className="text-destructive">❌</span> {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <OfertaButton text="🔽 QUIERO ACCEDER POR $9 🔽" />
+
+      {/* Last warning */}
+      <div className="mt-10 text-center">
+        <p className="font-body font-bold text-foreground text-lg mb-2">⚠️ ÚLTIMO AVISO</p>
+        <p className="text-muted-foreground font-body">Cada minuto que pasa…</p>
+        <p className="text-foreground/80 font-body mt-2">👉 Más personas están comprando</p>
+        <p className="text-foreground/80 font-body">👉 Y el precio puede cambiar</p>
+        <p className="text-foreground font-body font-bold mt-4">No dejes pasar esta oportunidad.</p>
       </div>
     </div>
   </section>
@@ -352,6 +429,17 @@ const Footer = () => (
 );
 
 /* ── Page ──────────────────────────────────────── */
+/* ── Sticky Button ─────────────────────────────── */
+const StickyOfferButton = () => (
+  <a
+    href="#precio"
+    className="fixed bottom-6 right-6 z-50 bg-gradient-gold text-primary-foreground font-body font-black text-sm md:text-base px-6 py-3 rounded-full shadow-gold hover:scale-110 transition-all duration-300 animate-pulse-glow"
+  >
+    🔥 Ver Oferta
+  </a>
+);
+
+/* ── Page ──────────────────────────────────────── */
 const Index = () => (
   <div className="min-h-screen">
     <Hero />
@@ -367,6 +455,7 @@ const Index = () => (
     <Garantia />
     <CtaFinal />
     <Footer />
+    <StickyOfferButton />
   </div>
 );
 
